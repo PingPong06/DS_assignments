@@ -64,7 +64,7 @@ int main(){
     
     int count = 0;
     while(count != 5){
-        cout<<"\nEnter the number as per your choice of operation: ";
+        cout<<"\n\nEnter the number of your choice of operation: ";
         int opt;
         cin>>opt;
         switch (opt){
