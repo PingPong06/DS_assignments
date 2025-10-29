@@ -41,36 +41,39 @@ public:
     }
 };
 
-int main(){
-    // int n;
-    // cout<<"Enter the size of the parantheses: ";
-    // cin>>n;
-    
+int main() {
     string para;
-    cout<<"Enter a parantheses string of types '()' , '[]' , '{}' : ";
-    cin>>para;
+    cout << "Enter a parentheses string of types '()' , '[]' , '{}' : ";
+    cin >> para;
 
     stack st(para.size());
-    int count=0;
-    for(int i=0;i<para.size();i++){
+
+    for (int i = 0; i < para.size(); i++) {
         char check = para[i];
-        char compare = st.arr[st.top];
-        
-        if(check == '(' || check == '[' || check == '{') st.push(check);
-        else if(compare == '(' && check == ')' ){
-            st.pop();
-            count++;
+
+        if (check == '(' || check == '[' || check == '{') {
+            st.push(check);
         }
-        else if(compare == '[' && check == ']'  ){
-            st.pop();
-            count++;
-        }
-        else if(compare == '{' && check == '}'  ){
-            st.pop();
-            count++;
+        else {
+            if (st.top == -1) {
+                cout << "Not a valid Parentheses" << endl;
+                return 0;
+            }
+            char compare = st.arr[st.top];
+            if ((compare == '(' && check == ')') ||
+                (compare == '[' && check == ']') ||
+                (compare == '{' && check == '}')) {
+                st.pop();
+            }
+            else {
+                cout << "Not a valid Parentheses" << endl;
+                return 0;
+            }
         }
     }
-    if(st.top == -1 && count == para.size()/2) cout<<"valid parentheses"<<endl;
-    else cout<<"Not a valid Parentheses"<<endl;
 
+    if (st.top == -1)
+        cout << "Valid Parentheses" << endl;
+    else
+        cout << "Not a valid Parentheses" << endl;
 }
