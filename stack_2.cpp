@@ -36,7 +36,9 @@ int main(){
     cin.ignore();
     stack obj(size);
     string reverseString;
+    cout<<"Enter the string: ";
     getline(cin , reverseString);
+    cout<<endl;
     for(int i=0;i<reverseString.size();i++){
         obj.push(reverseString[i]);
     }
